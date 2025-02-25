@@ -30,9 +30,9 @@ bot.use(async (ctx, next) => {
 });
 
 setupBotCommands(bot)
-
-bot.use(startMenu)
 bot.use(mainMenu);
+bot.use(startMenu)
+
 
 
 // bot.command("start", async (ctx) => {

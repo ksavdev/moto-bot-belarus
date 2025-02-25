@@ -15,8 +15,8 @@ bot.use(async (ctx, next) => {
     await next();
 });
 setupBotCommands(bot);
-bot.use(startMenu);
 bot.use(mainMenu);
+bot.use(startMenu);
 // bot.command("start", async (ctx) => {
 //     if (ctx.config.isDeveloper) await ctx.reply("Привет, мам!");
 //     else await ctx.reply("Добро пожаловать");
