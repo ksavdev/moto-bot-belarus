@@ -17,11 +17,12 @@ bot.use(async (ctx, next) => {
 setupBotCommands(bot);
 bot.use(startMenu);
 bot.use(mainMenu);
+// bot.command("start", async (ctx) => {
+//     if (ctx.config.isDeveloper) await ctx.reply("Привет, мам!");
+//     else await ctx.reply("Добро пожаловать");
+//   });
 bot.command("start", async (ctx) => {
-    if (ctx.config.isDeveloper)
-        await ctx.reply("Привет, мам!");
-    else
-        await ctx.reply("Добро пожаловать");
+    ctx.reply("Добро пожаловать", { reply_markup: startMenu });
 });
 bot.on("message", (ctx) => ctx.reply("Если у тебя возникли вопросы вызови команду /help. Чтобы написать разработчику, используй команду /contact"));
 bot.start();
