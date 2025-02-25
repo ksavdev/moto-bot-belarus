@@ -15,7 +15,7 @@ export const startMenu = new Menu<MyContext>("start-menu")
     await ctx.menu.close();
   })
   .row()
-  .text("3️⃣Для опытных мотоциклистов", async (ctx) => {
+  .text("Для опытных мотоциклистов", async (ctx) => {
     await ctx.reply(`Для опытных мотоциклистов:`,
       { reply_markup: mainMenu });
     await ctx.menu.close();
