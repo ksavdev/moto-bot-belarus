@@ -3,7 +3,6 @@ import { MyContext } from "../bot.js";
 import { getEquipShops } from "../services/getEquipShops.js";
 import { getEquipShopsEu } from "../services/getEquipShopsEu.js";
 import { getSecondHands } from "../services/getSecondHands.js";
-import { getUserServices } from "../services/getUserServices.js";
 import { getTireServices } from "../services/getTireServices.js";
 import { getFastFoodPlaces } from "../services/getFastFoodPlaces.js";
 import { getEvents } from "../services/getEvents.js";
