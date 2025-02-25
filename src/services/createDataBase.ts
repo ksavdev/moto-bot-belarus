@@ -22,15 +22,6 @@ export async function createDataBase() {
         note TEXT
       );
     `);
-
-    await db.query(`
-      CREATE TABLE IF NOT EXISTS services (
-        id SERIAL PRIMARY KEY,
-        username TEXT,
-        services TEXT
-      );
-    `);
-
     await db.query(`
       CREATE TABLE IF NOT EXISTS tire_services (
         id SERIAL PRIMARY KEY,
@@ -59,15 +50,25 @@ export async function createDataBase() {
       );
     `);
     await db.query(`
-      CREATE TABLE IF NOT EXISTS admins (
+      CREATE TABLE IF NOT EXISTS events (
         id SERIAL PRIMARY KEY,
-        telegram_id BIGINT UNIQUE,
-        name TEXT NOT NULL
+        name TEXT,
+        date TEXT,
+        link TEXT,
+        note TEXT
+      );
+    `);
+    await db.query(`
+      CREATE TABLE IF NOT EXISTS chats (
+        id SERIAL PRIMARY KEY,
+        name TEXT,
+        link TEXT,
+        note TEXT
       );
     `);
 
-    console.log("Tables created successfully in PostgreSQL.");
+    console.log("Таблицы успешно созданы в PostgreSQL.");
   } catch (err) {
-    console.error("Error connecting to the database:", err);
+    console.error("Ошибка коннекта с БД:", err);
   }
 }
