@@ -6,6 +6,9 @@ import { setupBotCommands } from "./commands/commandList.js";
 import { mainMenu } from "./menus/mainMenu.js";
 import { startMenu } from "./menus/startMenu.js";
 import { createDataBase } from "./services/createDataBase.js";
+import { newbieMenu } from "./menus/newbieMenu.js";
+import { seniorMenu } from "./menus/seniorMenu.js";
+import { guideMenu } from "./menus/guideMenu.js";
 
 
 const bot = new Bot<MyContext>(process.env.BOT_API_KEY || "");
@@ -37,6 +40,9 @@ bot.use(async (ctx, next) => {
 });
 
 setupBotCommands(bot)
+bot.use(guideMenu);
+bot.use(seniorMenu);
+bot.use(newbieMenu);
 bot.use(mainMenu);
 bot.use(startMenu)
 
