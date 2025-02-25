@@ -12,8 +12,7 @@ export const mainMenu = new Menu("main-menu")
     const shopList = shops.map(shop => `
 🏬 <b>${shop.name}</b>
 📍 <i>${shop.address}</i>  
-🔗 <a href="${shop.link}">Перейти</a>
-${shop.note ? `💡 <i>${shop.note}</i>` : ''}`).join("\n\n");
+🔗 <a href="${shop.link}">Перейти</a>`).join("\n\n");
     await ctx.reply(shopList, { parse_mode: "HTML", link_preview_options: { is_disabled: true } });
     await ctx.menu.close();
 })
@@ -22,8 +21,7 @@ ${shop.note ? `💡 <i>${shop.note}</i>` : ''}`).join("\n\n");
     const shopsEu = await getEquipShopsEu();
     const shopListEu = shopsEu.map(shop => `
 🛒 <b>${shop.name}</b>  
-🔗 <a href="${shop.link}">Перейти</a>  
-${shop.note ? `ℹ️ <i>${shop.note}</i>` : ''}`).join("\n\n");
+🔗 <a href="${shop.link}">Перейти</a>`).join("\n\n");
     await ctx.reply(`${shopListEu}\n\n🚚 Если знаешь, кто может доставить из Европы в Беларусь, пиши /contact, добавим информацию.`, { parse_mode: "HTML", link_preview_options: { is_disabled: true } });
     await ctx.menu.close();
 })
