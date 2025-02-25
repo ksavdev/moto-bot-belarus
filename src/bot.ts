@@ -5,10 +5,17 @@ import { Bot, Context } from "grammy";
 import { setupBotCommands } from "./commands/commandList.js";
 import { mainMenu } from "./menus/mainMenu.js";
 import { startMenu } from "./menus/startMenu.js";
+import { createDataBase } from "./services/createDataBase.js";
 
 
 const bot = new Bot<MyContext>(process.env.BOT_API_KEY || "");
 const MAIN_ADMIN = 890360195;
+
+console.log("🔄 Проверка таблиц в базе данных...");
+await createDataBase();
+console.log("✅ База данных готова!");
+console.log('✅ Бот запущен');
+
 
 interface BotConfig {
     botDeveloper: number;
@@ -41,8 +48,8 @@ bot.use(startMenu)
 //   });
 
 bot.command("start", async (ctx) => {
-    ctx.reply("Добро пожаловать", {reply_markup : startMenu});
-  });
+    ctx.reply("Добро пожаловать", { reply_markup: startMenu });
+});
 
 bot.on("message", (ctx) => ctx.reply("Если у тебя возникли вопросы вызови команду /help. Чтобы написать разработчику, используй команду /contact"));
 

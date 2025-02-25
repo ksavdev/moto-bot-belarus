@@ -4,8 +4,13 @@ import { Bot } from "grammy";
 import { setupBotCommands } from "./commands/commandList.js";
 import { mainMenu } from "./menus/mainMenu.js";
 import { startMenu } from "./menus/startMenu.js";
+import { createDataBase } from "./services/createDataBase.js";
 const bot = new Bot(process.env.BOT_API_KEY || "");
 const MAIN_ADMIN = 890360195;
+console.log("🔄 Проверка таблиц в базе данных...");
+await createDataBase();
+console.log("✅ База данных готова!");
+console.log('✅ Бот запущен');
 console.log("BOT_API_KEY: ", process.env.BOT_API_KEY);
 bot.use(async (ctx, next) => {
     ctx.config = {
