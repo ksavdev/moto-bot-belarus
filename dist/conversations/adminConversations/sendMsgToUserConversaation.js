@@ -1,4 +1,4 @@
-export const sendMsgToUserConversation = async (conversation, ctx, bot) => {
+export const sendMsgToUserConversation = async (conversation, ctx) => {
     try {
         await ctx.reply("Привет! Кому будем писать? Введи ID пользователя.");
         const userTelegramIdMessage = await conversation.waitFor("message");
@@ -15,13 +15,7 @@ export const sendMsgToUserConversation = async (conversation, ctx, bot) => {
             return;
         }
         await ctx.reply(`Окей, пишем пользователю ${userTelegramId} сообщение: ${messageToUser}`);
-        // Проверяем, определён ли bot
-        if (!bot || !bot.api) {
-            console.error("Ошибка: bot не определён или не содержит api.");
-            await ctx.reply("Ошибка: бот не был инициализирован.");
-            return;
-        }
-        await sendMessageToUser(userTelegramId, messageToUser, bot);
+        await sendMessageToUser(userTelegramId, messageToUser, ctx);
     }
     catch (error) {
         console.error("Ошибка при отправке сообщения:", error);

@@ -1,5 +1,5 @@
 import { Conversation } from "@grammyjs/conversations";
-import { Context } from "grammy";
+
 import { MAIN_ADMIN, MyContext } from "../bot.js";
 
 const oneHourInMilliseconds = 60 * 60 * 1000;

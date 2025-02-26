@@ -1,12 +1,8 @@
 import { Conversation } from "@grammyjs/conversations";
-import { Bot, Context } from "grammy";
+
 import { MyContext } from "../../bot.js";
 
-export const sendMsgToUserConversation = async (
-    conversation: Conversation<MyContext, MyContext>,
-    ctx: MyContext,
-    bot: Bot<MyContext>
-) => {
+export const sendMsgToUserConversation = async (conversation: Conversation<MyContext, MyContext>, ctx: MyContext) => {
     try {
         await ctx.reply("Привет! Кому будем писать? Введи ID пользователя.");
         const userTelegramIdMessage = await conversation.waitFor("message");
@@ -28,14 +24,8 @@ export const sendMsgToUserConversation = async (
 
         await ctx.reply(`Окей, пишем пользователю ${userTelegramId} сообщение: ${messageToUser}`);
 
-        // Проверяем, определён ли bot
-        if (!bot || !bot.api) {
-            console.error("Ошибка: bot не определён или не содержит api.");
-            await ctx.reply("Ошибка: бот не был инициализирован.");
-            return;
-        }
 
-        await sendMessageToUser(userTelegramId, messageToUser, bot);
+        await sendMessageToUser(userTelegramId, messageToUser, ctx);
     } catch (error) {
         console.error("Ошибка при отправке сообщения:", error);
         await ctx.reply("Произошла ошибка при отправке сообщения.");
@@ -45,7 +35,7 @@ export const sendMsgToUserConversation = async (
 async function sendMessageToUser(
     userTelegramId: string,
     message: string,
-    bot: Bot<MyContext>
+    bot: MyContext
 ) {
     try {
         // Проверяем, есть ли bot и его API
