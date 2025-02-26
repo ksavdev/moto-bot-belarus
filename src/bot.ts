@@ -20,7 +20,7 @@ import { helpMenuCommand } from "./commands/helpMenuCommand.js";
 import { contactMenuCommand } from "./commands/contactMenuCommand.js";
 import { contactConversation } from "./conversations/contactConversation.js";
 import { sendMsgToUser } from "./commands/adminCommands/sendMsgToUser.js";
-import { sendMsgToUserConversaation } from "./conversations/adminConversations/sendMsgToUserConversaation.js";
+import { sendMsgToUserConversation } from "./conversations/adminConversations/sendMsgToUserConversaation.js";
 
 
 
@@ -56,7 +56,7 @@ bot.use(async (ctx, next) => {
     await next();
 });
 
-bot.use(createConversation(sendMsgToUserConversaation));
+bot.use(createConversation(sendMsgToUserConversation));
 bot.use(createConversation(contactConversation));
 
 

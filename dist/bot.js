@@ -18,7 +18,7 @@ import { helpMenuCommand } from "./commands/helpMenuCommand.js";
 import { contactMenuCommand } from "./commands/contactMenuCommand.js";
 import { contactConversation } from "./conversations/contactConversation.js";
 import { sendMsgToUser } from "./commands/adminCommands/sendMsgToUser.js";
-import { sendMsgToUserConversaation } from "./conversations/adminConversations/sendMsgToUserConversaation.js";
+import { sendMsgToUserConversation } from "./conversations/adminConversations/sendMsgToUserConversaation.js";
 const bot = new Bot(process.env.BOT_API_KEY || "");
 console.log("BOT_API_KEY: ", process.env.BOT_API_KEY);
 bot.use(conversations());
@@ -35,7 +35,7 @@ bot.use(async (ctx, next) => {
     };
     await next();
 });
-bot.use(createConversation(sendMsgToUserConversaation));
+bot.use(createConversation(sendMsgToUserConversation));
 bot.use(createConversation(contactConversation));
 bot.use(guideMenu);
 bot.use(seniorMenu);
