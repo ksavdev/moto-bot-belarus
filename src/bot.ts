@@ -55,14 +55,7 @@ bot.use(async (ctx, next) => {
 
 bot.use(createConversation(contactConversation));
 
-// adMenuCommand(bot);
-contactMenuCommand(bot);
-helpMenuCommand(bot);
-guideMenuCommand(bot);
-seniorMenuCommand(bot);
-newbieMenuCommand(bot);
-startMenuCommand(bot);
-setupBotCommands(bot)
+
 bot.use(guideMenu);
 bot.use(seniorMenu);
 bot.use(newbieMenu);
@@ -75,6 +68,14 @@ bot.use(startMenu)
 //     if (ctx.config.isDeveloper) await ctx.reply("Привет, мам!");
 //     else await ctx.reply("Добро пожаловать");
 //   });
+// adMenuCommand(bot);
+contactMenuCommand(bot);
+helpMenuCommand(bot);
+guideMenuCommand(bot);
+seniorMenuCommand(bot);
+newbieMenuCommand(bot);
+startMenuCommand(bot);
+setupBotCommands(bot)
 
 bot.command("start", async (ctx) => {
     ctx.reply(
