@@ -1,31 +1,45 @@
 import dotenv from "dotenv";
 dotenv.config();
 
+import { autoRetry } from "@grammyjs/auto-retry";
+
 import { Bot, Context } from "grammy";
 import { setupBotCommands } from "./commands/commandList.js";
+import { ConversationFlavor, conversations, createConversation } from "@grammyjs/conversations";
 import { mainMenu } from "./menus/mainMenu.js";
 import { startMenu } from "./menus/startMenu.js";
 import { createDataBase } from "./services/createDataBase.js";
 import { newbieMenu } from "./menus/newbieMenu.js";
 import { seniorMenu } from "./menus/seniorMenu.js";
 import { guideMenu } from "./menus/guideMenu.js";
+import { startMenuCommand } from "./commands/startMenuCommand.js";
+import { newbieMenuCommand } from "./commands/newbieMenuCommand.js";
+import { seniorMenuCommand } from "./commands/seniorMenuCommand.js";
+import { guideMenuCommand } from "./commands/guideMenuCommand.js";
+import { helpMenuCommand } from "./commands/helpMenuCommand.js";
+import { contactMenuCommand } from "./commands/contactMenuCommand.js";
+import { contactConversation } from "./conversations/contactConversation.js";
 
 
-const bot = new Bot<MyContext>(process.env.BOT_API_KEY || "");
-const MAIN_ADMIN = 890360195;
+
+const bot = new Bot<ConversationFlavor<MyContext>>(process.env.BOT_API_KEY || "");
+bot.use(conversations());
+
+export const MAIN_ADMIN = 890360195;
 
 console.log("🔄 Проверка таблиц в базе данных...");
 await createDataBase();
 console.log("✅ База данных готова!");
 console.log('✅ Бот запущен');
 
+bot.api.config.use(autoRetry());
 
 interface BotConfig {
     botDeveloper: number;
     isDeveloper: boolean;
 }
 
-export type MyContext = Context & {
+export type MyContext = Context & ConversationFlavor<Context> & {
     config: BotConfig;
 };
 
@@ -39,6 +53,15 @@ bot.use(async (ctx, next) => {
     await next();
 });
 
+bot.use(createConversation(contactConversation));
+
+// adMenuCommand(bot);
+contactMenuCommand(bot);
+helpMenuCommand(bot);
+guideMenuCommand(bot);
+seniorMenuCommand(bot);
+newbieMenuCommand(bot);
+startMenuCommand(bot);
 setupBotCommands(bot)
 bot.use(guideMenu);
 bot.use(seniorMenu);

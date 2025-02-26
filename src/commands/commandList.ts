@@ -10,6 +10,6 @@ export const setupBotCommands = (bot: Bot<MyContext>) => {
         { command: 'guide', description: "Меню гайдов" },
         { command: 'help', description: "Помощь" },
         { command: 'contact', description: "Написать разработчику" },
-        { command: 'ad', description: "Предложения по рекламе" },
+        // { command: 'ad', description: "Предложения по рекламе" },
     ]);
 };
