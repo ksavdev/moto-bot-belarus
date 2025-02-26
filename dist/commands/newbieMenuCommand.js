@@ -1,6 +1,6 @@
-import { seniorMenu } from "../menus/seniorMenu.js";
+import { newbieMenu } from "../menus/newbieMenu.js";
 export const newbieMenuCommand = (bot) => {
-    bot.command("senior", async (ctx) => {
-        ctx.reply(`Для опытных мотоциклистов:`, { reply_markup: seniorMenu });
+    bot.command("newbie", async (ctx) => {
+        ctx.reply(`Для новичков:`, { reply_markup: newbieMenu });
     });
 };

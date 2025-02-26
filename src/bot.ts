@@ -14,7 +14,6 @@ import { newbieMenu } from "./menus/newbieMenu.js";
 import { guideMenu } from "./menus/guideMenu.js";
 import { startMenuCommand } from "./commands/startMenuCommand.js";
 import { newbieMenuCommand } from "./commands/newbieMenuCommand.js";
-import { seniorMenuCommand } from "./commands/seniorMenuCommand.js";
 import { guideMenuCommand } from "./commands/guideMenuCommand.js";
 import { helpMenuCommand } from "./commands/helpMenuCommand.js";
 import { contactMenuCommand } from "./commands/contactMenuCommand.js";
@@ -69,7 +68,6 @@ sendMsgToUser(bot);
 contactMenuCommand(bot);
 helpMenuCommand(bot);
 guideMenuCommand(bot);
-
 newbieMenuCommand(bot);
 startMenuCommand(bot);
 setupBotCommands(bot)
