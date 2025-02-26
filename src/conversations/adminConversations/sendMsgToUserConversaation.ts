@@ -28,6 +28,13 @@ export const sendMsgToUserConversation = async (
 
         await ctx.reply(`Окей, пишем пользователю ${userTelegramId} сообщение: ${messageToUser}`);
 
+        // Проверяем, определён ли bot
+        if (!bot || !bot.api) {
+            console.error("Ошибка: bot не определён или не содержит api.");
+            await ctx.reply("Ошибка: бот не был инициализирован.");
+            return;
+        }
+
         await sendMessageToUser(userTelegramId, messageToUser, bot);
     } catch (error) {
         console.error("Ошибка при отправке сообщения:", error);
@@ -41,6 +48,11 @@ async function sendMessageToUser(
     bot: Bot<MyContext>
 ) {
     try {
+        // Проверяем, есть ли bot и его API
+        if (!bot || !bot.api) {
+            throw new Error("Объект bot не определён или его API не доступен.");
+        }
+
         await bot.api.sendMessage(
             Number(userTelegramId),
             `Привет! Тебе пишет разработчик бота! :) \n` +
