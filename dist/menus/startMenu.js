@@ -23,4 +23,9 @@ export const startMenu = new Menu("start-menu")
     await ctx.reply(`Полезные гайды:`, { reply_markup: guideMenu });
     await ctx.menu.close();
 })
+    .row()
+    .text("Написать разработчику", async (ctx) => {
+    await ctx.conversation.enter("contactConversation");
+    await ctx.menu.close();
+})
     .row();
