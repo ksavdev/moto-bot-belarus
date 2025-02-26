@@ -7,7 +7,6 @@ import { MyContext } from "../../bot.js";
 
 export const sendMsgToUserConversaation = async (conversation: Conversation<MyContext, MyContext>, ctx: MyContext, bot: Bot<MyContext>) => {
 
-
     await ctx.reply("Привет! Кому будем писать? Введи ID пользователя.");
     const userTelegramIdMessage = await conversation.waitFor("message");
     const userTelegramId = userTelegramIdMessage.message?.text;
