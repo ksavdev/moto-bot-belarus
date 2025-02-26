@@ -10,7 +10,6 @@ import { mainMenu } from "./menus/mainMenu.js";
 import { startMenu } from "./menus/startMenu.js";
 import { createDataBase } from "./services/createDataBase.js";
 import { newbieMenu } from "./menus/newbieMenu.js";
-
 import { guideMenu } from "./menus/guideMenu.js";
 import { startMenuCommand } from "./commands/startMenuCommand.js";
 import { newbieMenuCommand } from "./commands/newbieMenuCommand.js";

@@ -9,7 +9,7 @@ import { getEvents } from "../services/getEvents.js";
 import { getChats } from "../services/getChats.js";
 
 export const mainMenu = new Menu<MyContext>("main-menu")
-  .text("🛒 Где купить новый экип (РБ)?", async (ctx) => {
+  .text("🛒 Где купить новый экип (РБ)", async (ctx) => {
     const shops = await getEquipShops();
     const shopList = shops.map(shop => `
 🛒 <b>${shop.name}</b>
@@ -20,7 +20,7 @@ export const mainMenu = new Menu<MyContext>("main-menu")
     await ctx.menu.close();
   })
   .row()
-  .text("🌍 Где купить новый экип (Европа)?", async (ctx) => {
+  .text("🌍 Где купить новый экип (Европа)", async (ctx) => {
     const shopsEu = await getEquipShopsEu();
     const shopListEu = shopsEu.map(shop => `
 🌍 <b>${shop.name}</b>  
@@ -34,7 +34,7 @@ export const mainMenu = new Menu<MyContext>("main-menu")
     await ctx.menu.close();
   })
   .row()
-  .text("♻ Где купить б/у экип (РБ)?", async (ctx) => {
+  .text("♻ Где купить б/у экип (РБ)", async (ctx) => {
     const secondHands = await getSecondHands();
     const secondHandsList = secondHands.map(shop => `
 ♻ <b>${shop.name}</b>  
@@ -73,7 +73,7 @@ ${place.note ? `ℹ️ <i>${place.note}</i>` : ''}`
     await ctx.menu.close();
   })
   .row()
-  .text("📆 Мото-мероприятия (слёты, гонки, фесты)", async (ctx) => {
+  .text("📆 Мото-мероприятия", async (ctx) => {
     const events = await getEvents();
     const eventsList = events.map(event => `
 📆 <b>${event.name}</b>  
@@ -98,7 +98,7 @@ ${chat.note ? `ℹ️ <i>${chat.note}</i>` : ''}`
     await ctx.menu.close();
   })
   .row()
-  .text("🚨 Чёрный список СТО и магазинов", async (ctx) => {
+  .text("🚨 Черный список СТО и магазинов", async (ctx) => {
     await ctx.reply(`Раздел в разработке...`);
     await ctx.menu.close();
   })

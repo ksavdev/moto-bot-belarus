@@ -1,9 +1,10 @@
 import { Menu } from "@grammyjs/menu";
 import { MyContext } from "../bot.js";
+import { howToGetLicense } from "../messages/messages.js";
 
 export const newbieMenu = new Menu<MyContext>("newbie-menu")
   .text("🏍 Как получить права на мотоцикл?", async (ctx) => {
-    await ctx.reply(`Тут будет гайд`);
+    await ctx.reply(howToGetLicense, { parse_mode: "HTML", link_preview_options: { is_disabled: true } });
     await ctx.menu.close();
   })
   .row()
