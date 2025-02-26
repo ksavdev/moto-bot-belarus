@@ -97,6 +97,11 @@ ${chat.note ? `ℹ️ <i>${chat.note}</i>` : ''}`
     await ctx.reply(chatsList, { parse_mode: "HTML", link_preview_options: { is_disabled: true } });
     await ctx.menu.close();
   })
+  .row()
+  .text("🚨 Чёрный список СТО и магазинов", async (ctx) => {
+    await ctx.reply(`Раздел в разработке...`);
+    await ctx.menu.close();
+  })
   .row();
 
 

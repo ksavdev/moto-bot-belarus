@@ -1,13 +1,13 @@
 import { Bot } from "grammy";
 import { MyContext } from "../bot.js";
+import { newbieMenu } from "../menus/newbieMenu.js";
 
-import { seniorMenu } from "../menus/seniorMenu.js";
 
 export const newbieMenuCommand = (bot: Bot<MyContext>) =>{
-    bot.command("senior", async (ctx) => {
+    bot.command("newbie", async (ctx) => {
         ctx.reply(
             `Для опытных мотоциклистов:`,
-            { reply_markup: seniorMenu }
+            { reply_markup: newbieMenu }
         );
     });
 }

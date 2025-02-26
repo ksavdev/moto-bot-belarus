@@ -10,7 +10,7 @@ import { mainMenu } from "./menus/mainMenu.js";
 import { startMenu } from "./menus/startMenu.js";
 import { createDataBase } from "./services/createDataBase.js";
 import { newbieMenu } from "./menus/newbieMenu.js";
-import { seniorMenu } from "./menus/seniorMenu.js";
+
 import { guideMenu } from "./menus/guideMenu.js";
 import { startMenuCommand } from "./commands/startMenuCommand.js";
 import { newbieMenuCommand } from "./commands/newbieMenuCommand.js";
@@ -59,28 +59,17 @@ bot.use(async (ctx, next) => {
 bot.use(createConversation(sendMsgToUserConversation));
 bot.use(createConversation(contactConversation));
 
-
 bot.use(guideMenu);
-bot.use(seniorMenu);
+
 bot.use(newbieMenu);
 bot.use(mainMenu);
 bot.use(startMenu)
 
-
-
-// bot.command("start", async (ctx) => {
-//     if (ctx.config.isDeveloper) await ctx.reply("Привет, мам!");
-//     else await ctx.reply("Добро пожаловать");
-//   });
-
-
-
 sendMsgToUser(bot);
-// adMenuCommand(bot);
 contactMenuCommand(bot);
 helpMenuCommand(bot);
 guideMenuCommand(bot);
-seniorMenuCommand(bot);
+
 newbieMenuCommand(bot);
 startMenuCommand(bot);
 setupBotCommands(bot)

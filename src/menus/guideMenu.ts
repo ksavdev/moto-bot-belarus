@@ -7,6 +7,21 @@ export const guideMenu = new Menu<MyContext>("guide-menu")
     await ctx.menu.close();
   })
   .row()
+  .text("💰 Где выгодно купить мотоцикл?", async (ctx) => {
+    await ctx.reply(`Тут будет гайд`);
+    await ctx.menu.close();
+  })
+  .row()
+  .text("Как купить мотоцикл из США", async (ctx) => {
+    await ctx.reply(`Тут будет гайд`);
+    await ctx.menu.close();
+  })
+  .row()
+  .text("Как купить мотоцикл из Японии", async (ctx) => {
+    await ctx.reply(`Тут будет гайд`);
+    await ctx.menu.close();
+  })
+  .row()
   .text("⚙ Как подготовить мотоцикл к сезону?", async (ctx) => {
     await ctx.reply(`Тут будет гайд`);
     await ctx.menu.close();
