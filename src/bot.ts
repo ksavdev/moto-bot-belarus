@@ -19,10 +19,13 @@ import { guideMenuCommand } from "./commands/guideMenuCommand.js";
 import { helpMenuCommand } from "./commands/helpMenuCommand.js";
 import { contactMenuCommand } from "./commands/contactMenuCommand.js";
 import { contactConversation } from "./conversations/contactConversation.js";
+import { sendMsgToUser } from "./commands/adminCommands/sendMsgToUser.js";
+import { sendMsgToUserConversaation } from "./conversations/adminConversations/sendMsgToUserConversaation.js";
 
 
 
 const bot = new Bot<ConversationFlavor<MyContext>>(process.env.BOT_API_KEY || "");
+console.log("BOT_API_KEY: ", process.env.BOT_API_KEY);
 bot.use(conversations());
 
 export const MAIN_ADMIN = 890360195;
@@ -43,7 +46,7 @@ export type MyContext = Context & ConversationFlavor<Context> & {
     config: BotConfig;
 };
 
-console.log("BOT_API_KEY: ", process.env.BOT_API_KEY);
+
 
 bot.use(async (ctx, next) => {
     ctx.config = {
@@ -53,6 +56,7 @@ bot.use(async (ctx, next) => {
     await next();
 });
 
+bot.use(createConversation(sendMsgToUserConversaation));
 bot.use(createConversation(contactConversation));
 
 
@@ -69,6 +73,9 @@ bot.use(startMenu)
 //     else await ctx.reply("Добро пожаловать");
 //   });
 
+
+
+sendMsgToUser(bot);
 // adMenuCommand(bot);
 contactMenuCommand(bot);
 helpMenuCommand(bot);
@@ -83,6 +90,7 @@ bot.command("start", async (ctx) => {
         "Привет! Я Мото Бот 🏍️. Я помогу тебе с выбором мотошколы, экипировки, сервисов и многим другим. Выбери, что тебе нужно из меню ниже, и я подскажу всю необходимую информацию! 🚀",
         { reply_markup: startMenu }
     );
+    console.log(`${ctx.from?.first_name} ${ctx.from?.last_name} начал диалог с ботом`);
 });
 
 
