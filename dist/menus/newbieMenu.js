@@ -1,5 +1,5 @@
 import { Menu } from "@grammyjs/menu";
-import { beginnerMistakes, beginnerMotoGear, howToChooseFirstMoto, howToGetLicense, motoMaintenanceForBeginners } from "../messages/messages.js";
+import { beginnerMistakes, beginnerMotoGear, howToChooseFirstMoto, howToChooseMotoSchool, howToGetLicense, motoMaintenanceForBeginners } from "../messages/messages.js";
 export const newbieMenu = new Menu("newbie-menu")
     .text("🏍 Как получить права на мотоцикл?", async (ctx) => {
     await ctx.reply(howToGetLicense, { parse_mode: "HTML", link_preview_options: { is_disabled: true } });
@@ -7,7 +7,7 @@ export const newbieMenu = new Menu("newbie-menu")
 })
     .row()
     .text("📜 Как выбрать мотошколу?", async (ctx) => {
-    await ctx.reply(`howToChooseMotoSchool`, { parse_mode: "HTML", link_preview_options: { is_disabled: true } });
+    await ctx.reply(howToChooseMotoSchool, { parse_mode: "HTML", link_preview_options: { is_disabled: true } });
     await ctx.menu.close();
 })
     .row()

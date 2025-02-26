@@ -1,6 +1,6 @@
 import { Menu } from "@grammyjs/menu";
 import { MyContext } from "../bot.js";
-import { beginnerMistakes, beginnerMotoGear, howToChooseFirstMoto, howToGetLicense, motoMaintenanceForBeginners } from "../messages/messages.js";
+import { beginnerMistakes, beginnerMotoGear, howToChooseFirstMoto, howToChooseMotoSchool, howToGetLicense, motoMaintenanceForBeginners } from "../messages/messages.js";
 
 export const newbieMenu = new Menu<MyContext>("newbie-menu")
   .text("🏍 Как получить права на мотоцикл?", async (ctx) => {
@@ -9,7 +9,7 @@ export const newbieMenu = new Menu<MyContext>("newbie-menu")
   })
   .row()
   .text("📜 Как выбрать мотошколу?", async (ctx) => {
-    await ctx.reply(`howToChooseMotoSchool`, { parse_mode: "HTML", link_preview_options: { is_disabled: true } });
+    await ctx.reply(howToChooseMotoSchool, { parse_mode: "HTML", link_preview_options: { is_disabled: true } });
     await ctx.menu.close();
   })
   .row()
