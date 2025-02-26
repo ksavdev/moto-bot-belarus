@@ -10,12 +10,12 @@ export const guideMenu = new Menu("guide-menu")
     await ctx.menu.close();
 })
     .row()
-    .text("Как купить мотоцикл из США", async (ctx) => {
+    .text("🇺🇸 Как купить мотоцикл из США", async (ctx) => {
     await ctx.reply(`Тут будет гайд`);
     await ctx.menu.close();
 })
     .row()
-    .text("Как купить мотоцикл из Японии", async (ctx) => {
+    .text("🇯🇵 Как купить мотоцикл из Японии", async (ctx) => {
     await ctx.reply(`Тут будет гайд`);
     await ctx.menu.close();
 })
