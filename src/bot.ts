@@ -68,6 +68,7 @@ bot.use(startMenu)
 //     if (ctx.config.isDeveloper) await ctx.reply("Привет, мам!");
 //     else await ctx.reply("Добро пожаловать");
 //   });
+
 // adMenuCommand(bot);
 contactMenuCommand(bot);
 helpMenuCommand(bot);
