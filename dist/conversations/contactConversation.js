@@ -1,4 +1,4 @@
-import { MAIN_ADMIN } from "../bot";
+import { MAIN_ADMIN } from "../bot.js";
 const oneHourInMilliseconds = 60 * 60 * 1000;
 export const contactConversation = async (conversation, ctx) => {
     const userTelegramId = ctx.from?.id || "Неизвестно";
