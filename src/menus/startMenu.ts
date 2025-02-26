@@ -24,7 +24,7 @@ export const startMenu = new Menu<MyContext>("start-menu")
   })
   .row()
   .text("Лучшие маршруты по Беларуси", async (ctx) => {
-    await ctx.reply(`Тут список маршрутов`);
+    await ctx.reply(`Раздел в разработке...`);
     await ctx.menu.close();
   })
   .row()
