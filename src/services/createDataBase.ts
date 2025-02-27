@@ -87,6 +87,14 @@ export async function createDataBase() {
         note TEXT
       );
     `);
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS shops_blacklist (
+        id SERIAL PRIMARY KEY,
+        name TEXT,
+        address TEXT,
+        note TEXT
+      );
+    `);
 
     console.log("Таблицы успешно созданы в PostgreSQL.");
   } catch (err) {

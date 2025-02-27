@@ -6,6 +6,7 @@ import { getTireServices } from "../services/getTireServices.js";
 import { getFastFoodPlaces } from "../services/getFastFoodPlaces.js";
 import { getEvents } from "../services/eventsControl.js";
 import { getChats } from "../services/getChats.js";
+import { getShopsBlacklist } from "../services/getBlacklistShops.js";
 export const mainMenu = new Menu("main-menu")
     .text("🛒 Где купить новый экип (РБ)", async (ctx) => {
     const shops = await getEquipShops();
@@ -81,7 +82,12 @@ ${chat.note ? `ℹ️<i>${chat.note}</i>` : ''}`).join("\n\n");
 })
     .row()
     .text("🚨 Черный список СТО и магазинов", async (ctx) => {
-    await ctx.reply(`Раздел в разработке...`);
+    const shops = await getShopsBlacklist();
+    const shopsList = shops.map(shop => `
+<b>${shop.name}</b>
+📍<i>${shop.address}</i>
+${shop.note ? `ℹ️<i>${shop.note}</i>` : ''}`).join("\n\n");
+    await ctx.reply(shopsList, { parse_mode: "HTML", link_preview_options: { is_disabled: true } });
     await ctx.menu.close();
 })
     .row();
