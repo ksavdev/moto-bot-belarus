@@ -91,7 +91,7 @@ ${place.note ? `ℹ️ <i>${place.note}</i>` : ''}`
     const chatsList = chats.map(chat => `
 💬 <b>${chat.name}</b>
 🔗 <a href="${chat.link}">Перейти</a>  
-${chat.note ? `ℹ️ <i>${chat.note}</i>` : ''}`
+${chat.note ? `ℹ️<i>${chat.note}</i>` : ''}`
     ).join("\n\n");
 
     await ctx.reply(chatsList, { parse_mode: "HTML", link_preview_options: { is_disabled: true } });
