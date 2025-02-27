@@ -21,7 +21,7 @@ export const mainMenu = new Menu<MyContext>("main-menu")
 📍 <i>${shop.address}</i>  
 🔗 <a href="${shop.link}">Перейти</a>`
     ).join("\n\n");
-    await ctx.reply(shopList, { reply_markup: backToMainMenu, parse_mode: "HTML", link_preview_options: { is_disabled: true } });
+    await ctx.reply(shopList, { parse_mode: "HTML", link_preview_options: { is_disabled: true } });
     await ctx.menu.close();
   })
   .row()

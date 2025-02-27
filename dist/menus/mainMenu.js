@@ -10,7 +10,6 @@ import { getShopsBlacklist } from "../services/getBlacklistShops.js";
 import { getNewMotoShops, getUsedMotoShops } from "../services/getMotoShops.js";
 import { getMotoTireShops } from "../services/getMotoTireShops.js";
 import { getMotoConsumablesShops } from "../services/getMotoConsumablesShops.js";
-import { backToMainMenu } from "./backToMainMenu.js";
 export const mainMenu = new Menu("main-menu")
     .text("🛒 Где купить новый экип (РБ)", async (ctx) => {
     const shops = await getEquipShops();
@@ -18,7 +17,7 @@ export const mainMenu = new Menu("main-menu")
 🛒 <b>${shop.name}</b>
 📍 <i>${shop.address}</i>  
 🔗 <a href="${shop.link}">Перейти</a>`).join("\n\n");
-    await ctx.reply(shopList, { reply_markup: backToMainMenu, parse_mode: "HTML", link_preview_options: { is_disabled: true } });
+    await ctx.reply(shopList, { parse_mode: "HTML", link_preview_options: { is_disabled: true } });
     await ctx.menu.close();
 })
     .row()
