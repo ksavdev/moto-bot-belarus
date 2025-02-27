@@ -74,6 +74,16 @@ export async function createDataBase() {
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `);
+        await client.query(`
+      CREATE TABLE IF NOT EXISTS moto_schools (
+        id SERIAL PRIMARY KEY,
+        name TEXT,
+        address TEXT,
+        phone TEXT,
+        link TEXT,
+        note TEXT
+      );
+    `);
         console.log("Таблицы успешно созданы в PostgreSQL.");
     }
     catch (err) {
