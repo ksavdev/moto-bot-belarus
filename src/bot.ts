@@ -24,6 +24,7 @@ import { saveUserInDataBase } from "./services/saveUserDataBase.js";
 import { addEventCommand, deleteEventCommand, getEventsCommand } from "./commands/adminCommands/eventsControlCommand.js";
 import { addEventConversation } from "./conversations/adminConversations/addEventConversation.js";
 import { deleteEventConversation } from "./conversations/adminConversations/deleteEventConversation.js";
+import { backToMainMenu } from "./menus/backToMainMenu.js";
 
 
 
@@ -66,6 +67,7 @@ bot.use(createConversation(deleteEventConversation));
 bot.use(createConversation(sendMsgToUserConversation));
 bot.use(createConversation(contactConversation));
 
+bot.use(backToMainMenu);
 bot.use(guideMenu);
 bot.use(newbieMenu);
 bot.use(mainMenu);
