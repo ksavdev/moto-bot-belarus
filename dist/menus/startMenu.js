@@ -1,7 +1,6 @@
 import { Menu } from "@grammyjs/menu";
 import { mainMenu } from "./mainMenu.js";
 import { newbieMenu } from "./newbieMenu.js";
-import { guideMenu } from "./guideMenu.js";
 export const startMenu = new Menu("start-menu")
     .text("Основное меню", async (ctx) => {
     await ctx.reply(`Основное меню:`, { reply_markup: mainMenu });
@@ -13,11 +12,13 @@ export const startMenu = new Menu("start-menu")
     await ctx.menu.close();
 })
     .row()
-    .text("Полезные гайды", async (ctx) => {
-    await ctx.reply(`Полезные гайды:`, { reply_markup: guideMenu });
-    await ctx.menu.close();
-})
-    .row()
+    // До лучших времен
+    // .text("Полезные гайды", async (ctx) => {
+    //   await ctx.reply(`Полезные гайды:`,
+    //     { reply_markup: guideMenu });
+    //   await ctx.menu.close();
+    // })
+    // .row()
     .text("Лучшие маршруты по Беларуси", async (ctx) => {
     await ctx.reply(`Раздел в разработке...`);
     await ctx.menu.close();

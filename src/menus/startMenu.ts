@@ -17,12 +17,13 @@ export const startMenu = new Menu<MyContext>("start-menu")
     await ctx.menu.close();
   })
   .row()
-  .text("Полезные гайды", async (ctx) => {
-    await ctx.reply(`Полезные гайды:`,
-      { reply_markup: guideMenu });
-    await ctx.menu.close();
-  })
-  .row()
+  // До лучших времен
+  // .text("Полезные гайды", async (ctx) => {
+  //   await ctx.reply(`Полезные гайды:`,
+  //     { reply_markup: guideMenu });
+  //   await ctx.menu.close();
+  // })
+  // .row()
   .text("Лучшие маршруты по Беларуси", async (ctx) => {
     await ctx.reply(`Раздел в разработке...`);
     await ctx.menu.close();
