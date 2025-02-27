@@ -62,9 +62,9 @@ ${place.note ? `ℹ️ <i>${place.note}</i>` : ''}`).join("\n\n");
     .text("📆 Мото-мероприятия", async (ctx) => {
     const events = await getEvents();
     const eventsList = events.length > 0 ? events.map(event => `
-  📆 <b>${event.name}</b>  
-  📍 <i>${event.date}</i>  
-  🔗 <a href="${event.link}">Перейти</a>  
+<b>${event.name}</b>  
+📆 <i>${event.date}</i>  
+🔗 <a href="${event.link}">Перейти</a>  
   ${event.note ? `ℹ️ <i>${event.note}</i>` : ''}`).join("\n\n") : "На данный момент нет ближайших мероприятий";
     await ctx.reply(eventsList, { parse_mode: "HTML", link_preview_options: { is_disabled: true } });
     await ctx.menu.close();

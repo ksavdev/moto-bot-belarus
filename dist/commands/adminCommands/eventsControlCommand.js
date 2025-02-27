@@ -28,8 +28,8 @@ export const getEventsCommand = (bot) => {
             const events = await getEvents();
             const eventsList = events.length > 0 ? events.map(event => `
 id: ${event.id}
-📆 <b>${event.name}</b>  
-📍 <i>${event.date}</i>  
+<b>${event.name}</b>  
+📆 <i>${event.date}</i>  
 🔗 <a href="${event.link}">Перейти</a>  
 ${event.note ? `ℹ️ <i>${event.note}</i>` : ''}`).join("\n\n") : "На данный момент нет ближайших мероприятий";
             await ctx.reply(eventsList, { parse_mode: "HTML", link_preview_options: { is_disabled: true } });
