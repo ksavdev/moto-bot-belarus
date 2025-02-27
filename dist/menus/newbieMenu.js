@@ -43,4 +43,6 @@ ${school.note ? `💡 <i>${school.note}</i>` : ''}`).join("\n\n");
     await ctx.reply(beginnerMistakes, { parse_mode: "HTML", link_preview_options: { is_disabled: true } });
     await ctx.menu.close();
 })
-    .row();
+    .row()
+    // Главное: кнопка назад
+    .back("Назад");

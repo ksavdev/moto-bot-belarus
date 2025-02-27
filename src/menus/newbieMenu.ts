@@ -47,3 +47,5 @@ ${school.note ? `💡 <i>${school.note}</i>` : ''}`
     await ctx.menu.close();
   })
   .row()
+  // Главное: кнопка назад
+  .back("Назад");
