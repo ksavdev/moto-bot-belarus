@@ -67,6 +67,16 @@ export async function createDataBase() {
         note TEXT
       );
     `);
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS users (
+        id SERIAL PRIMARY KEY,
+        name TEXT,
+        surname TEXT,
+        ID TEXT,
+        username TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+    `);
 
     console.log("Таблицы успешно созданы в PostgreSQL.");
   } catch (err) {

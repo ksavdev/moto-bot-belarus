@@ -17,6 +17,7 @@ import { contactMenuCommand } from "./commands/contactMenuCommand.js";
 import { contactConversation } from "./conversations/contactConversation.js";
 import { sendMsgToUser } from "./commands/adminCommands/sendMsgToUser.js";
 import { sendMsgToUserConversation } from "./conversations/adminConversations/sendMsgToUserConversaation.js";
+import { saveUserInDataBase } from "./services/saveUserDataBase.js";
 const bot = new Bot(process.env.BOT_API_KEY || "");
 console.log("BOT_API_KEY: ", process.env.BOT_API_KEY);
 bot.use(conversations());
@@ -54,6 +55,7 @@ bot.command("start", async (ctx) => {
         ID: ${ctx.from?.id ?? "Не указано"}\n
         username: ${ctx.from?.username ?? "Не указано"}\n
         Дата: ${new Date().toLocaleString()} запустил бота`);
+    saveUserInDataBase(ctx.from?.first_name ?? "Не указано", ctx.from?.last_name ?? "Не указано", ctx.from?.id ?? 0, ctx.from?.username ?? "Не указано");
 });
 bot.on("message", (ctx) => ctx.reply("Если у тебя возникли вопросы вызови команду /help. Чтобы написать разработчику, используй команду /contact"));
 bot.start();

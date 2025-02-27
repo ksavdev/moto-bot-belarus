@@ -19,6 +19,7 @@ import { contactMenuCommand } from "./commands/contactMenuCommand.js";
 import { contactConversation } from "./conversations/contactConversation.js";
 import { sendMsgToUser } from "./commands/adminCommands/sendMsgToUser.js";
 import { sendMsgToUserConversation } from "./conversations/adminConversations/sendMsgToUserConversaation.js";
+import { saveUserInDataBase } from "./services/saveUserDataBase.js";
 
 
 
@@ -81,6 +82,12 @@ bot.command("start", async (ctx) => {
         ID: ${ctx.from?.id ?? "Не указано"}\n
         username: ${ctx.from?.username ?? "Не указано"}\n
         Дата: ${new Date().toLocaleString()} запустил бота`);
+    saveUserInDataBase(
+        ctx.from?.first_name ?? "Не указано",
+        ctx.from?.last_name ?? "Не указано",
+        ctx.from?.id ?? 0,
+        ctx.from?.username ?? "Не указано"
+    );
 });
 
 
