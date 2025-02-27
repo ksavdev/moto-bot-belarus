@@ -15,7 +15,7 @@ export const newbieMenu = new Menu("newbie-menu")
     .text("📍 Мотошколы в Беларуси", async (ctx) => {
     const schools = await getMotoSchools();
     const shcoolList = schools.map(school => `
-🛒 <b>${school.name}</b>
+🏍 <b>${school.name}</b>
 📍 <i>${school.address}</i>  
 📞 <i>${school.phone}</i>  
 🔗 <a href="${school.link}">Перейти</a>
