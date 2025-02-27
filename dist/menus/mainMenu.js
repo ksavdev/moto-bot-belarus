@@ -4,7 +4,7 @@ import { getEquipShopsEu } from "../services/getEquipShopsEu.js";
 import { getSecondHands } from "../services/getSecondHands.js";
 import { getTireServices } from "../services/getTireServices.js";
 import { getFastFoodPlaces } from "../services/getFastFoodPlaces.js";
-import { getEvents } from "../services/getEvents.js";
+import { getEvents } from "../services/eventsControl.js";
 import { getChats } from "../services/getChats.js";
 export const mainMenu = new Menu("main-menu")
     .text("🛒 Где купить новый экип (РБ)", async (ctx) => {

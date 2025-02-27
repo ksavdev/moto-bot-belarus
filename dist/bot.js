@@ -18,6 +18,9 @@ import { contactConversation } from "./conversations/contactConversation.js";
 import { sendMsgToUser } from "./commands/adminCommands/sendMsgToUser.js";
 import { sendMsgToUserConversation } from "./conversations/adminConversations/sendMsgToUserConversaation.js";
 import { saveUserInDataBase } from "./services/saveUserDataBase.js";
+import { addEventCommand, deleteEventCommand, getEventsCommand } from "./commands/adminCommands/eventsControlCommand.js";
+import { addEventConversation } from "./conversations/adminConversations/addEventConversation.js";
+import { deleteEventConversation } from "./conversations/adminConversations/deleteEventConversation.js";
 const bot = new Bot(process.env.BOT_API_KEY || "");
 console.log("BOT_API_KEY: ", process.env.BOT_API_KEY);
 bot.use(conversations());
@@ -34,12 +37,17 @@ bot.use(async (ctx, next) => {
     };
     await next();
 });
+bot.use(createConversation(addEventConversation));
+bot.use(createConversation(deleteEventConversation));
 bot.use(createConversation(sendMsgToUserConversation));
 bot.use(createConversation(contactConversation));
 bot.use(guideMenu);
 bot.use(newbieMenu);
 bot.use(mainMenu);
 bot.use(startMenu);
+addEventCommand(bot);
+deleteEventCommand(bot);
+getEventsCommand(bot);
 sendMsgToUser(bot);
 contactMenuCommand(bot);
 helpMenuCommand(bot);
@@ -48,6 +56,13 @@ newbieMenuCommand(bot);
 startMenuCommand(bot);
 setupBotCommands(bot);
 bot.command("start", async (ctx) => {
+    if (ctx.config.isDeveloper) {
+        return ctx.reply(`Снова здрасте! Шо буим делать?\n
+        /addevent - добавить мероприятие\n
+        /deleteevent - удалить мероприятие\n
+        /getevents - получить список мероприятий\n
+        /sendmsg - отправить сообщение пользователю\n`);
+    }
     ctx.reply(`Привет, ${ctx.from?.first_name}! Я Мото Бот 🏍️. Я помогу тебе с выбором мотошколы, экипировки, сервисов и многим другим. Выбери, что тебе нужно из меню ниже, и я подскажу всю необходимую информацию! 🚀`, { reply_markup: startMenu });
     console.log(`Пользователь:\n
         Имя: ${ctx.from?.first_name ?? "Не указано"}\n
