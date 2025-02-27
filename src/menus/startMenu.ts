@@ -5,32 +5,26 @@ import { newbieMenu } from "./newbieMenu.js";
 import { guideMenu } from "./guideMenu.js";
 
 export const startMenu = new Menu<MyContext>("start-menu")
-  .text("Основное меню", async (ctx) => {
-    await ctx.reply(`Основное меню:`,
-      { reply_markup: mainMenu });
-    await ctx.menu.close();
-  })
-  .row()
-  .text("Для новичков", async (ctx) => {
-    await ctx.reply(`Для новичков:`,
-      { reply_markup: newbieMenu });
-    await ctx.menu.close();
-  })
-  .row()
-  // До лучших времен
-  // .text("Полезные гайды", async (ctx) => {
-  //   await ctx.reply(`Полезные гайды:`,
-  //     { reply_markup: guideMenu });
-  //   await ctx.menu.close();
-  // })
-  // .row()
-  // .text("Лучшие маршруты по Беларуси", async (ctx) => {
-  //   await ctx.reply(`Раздел в разработке...`);
-  //   await ctx.menu.close();
-  // })
-  // .row()
+  // Переход к "Основное меню"
+  .submenu("Основное меню", "main-menu")
+    .row()
+
+  // Кнопка "Для новичков"
+  .submenu("Для новичков", "newbie-menu")
+    .row()
+
+  // Кнопка "Полезные гайды"
+  .submenu("Полезные гайды", "guide-menu")
+    .row()
+
   .text("Написать разработчику", async (ctx) => {
+    // Переходим в разговор
     await ctx.conversation.enter("contactConversation");
     await ctx.menu.close();
   })
-  .row()
+  .row();
+
+// Теперь регистрируем «дочерние» меню
+startMenu.register(mainMenu);
+startMenu.register(newbieMenu);
+startMenu.register(guideMenu);
