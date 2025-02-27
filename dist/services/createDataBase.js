@@ -1,8 +1,9 @@
-import { db } from "./connectDataBase.js";
+import { openDB, closeDB } from "./openDataBase.js";
 export async function createDataBase() {
+    const client = await openDB();
     try {
         // Создание таблиц для PostgreSQL
-        await db.query(`
+        await client.query(`
       CREATE TABLE IF NOT EXISTS equipshops (
         id SERIAL PRIMARY KEY,
         name TEXT,
@@ -11,7 +12,7 @@ export async function createDataBase() {
         note TEXT
       );
     `);
-        await db.query(`
+        await client.query(`
       CREATE TABLE IF NOT EXISTS second_hands (
         id SERIAL PRIMARY KEY,
         name TEXT,
@@ -20,7 +21,7 @@ export async function createDataBase() {
         note TEXT
       );
     `);
-        await db.query(`
+        await client.query(`
       CREATE TABLE IF NOT EXISTS tire_services (
         id SERIAL PRIMARY KEY,
         name TEXT,
@@ -29,7 +30,7 @@ export async function createDataBase() {
         note TEXT
       );
     `);
-        await db.query(`
+        await client.query(`
       CREATE TABLE IF NOT EXISTS fastfood (
         id SERIAL PRIMARY KEY,
         name TEXT,
@@ -38,7 +39,7 @@ export async function createDataBase() {
         note TEXT
       );
     `);
-        await db.query(`
+        await client.query(`
       CREATE TABLE IF NOT EXISTS equipshops_eu (
         id SERIAL PRIMARY KEY,
         name TEXT,
@@ -46,7 +47,7 @@ export async function createDataBase() {
         note TEXT
       );
     `);
-        await db.query(`
+        await client.query(`
       CREATE TABLE IF NOT EXISTS events (
         id SERIAL PRIMARY KEY,
         name TEXT,
@@ -55,7 +56,7 @@ export async function createDataBase() {
         note TEXT
       );
     `);
-        await db.query(`
+        await client.query(`
       CREATE TABLE IF NOT EXISTS chats (
         id SERIAL PRIMARY KEY,
         name TEXT,
@@ -67,5 +68,8 @@ export async function createDataBase() {
     }
     catch (err) {
         console.error("Ошибка коннекта с БД:", err);
+    }
+    finally {
+        await closeDB(client);
     }
 }

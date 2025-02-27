@@ -58,7 +58,6 @@ bot.use(createConversation(sendMsgToUserConversation));
 bot.use(createConversation(contactConversation));
 
 bot.use(guideMenu);
-
 bot.use(newbieMenu);
 bot.use(mainMenu);
 bot.use(startMenu)
@@ -76,7 +75,12 @@ bot.command("start", async (ctx) => {
         `Привет, ${ctx.from?.first_name}! Я Мото Бот 🏍️. Я помогу тебе с выбором мотошколы, экипировки, сервисов и многим другим. Выбери, что тебе нужно из меню ниже, и я подскажу всю необходимую информацию! 🚀`,
         { reply_markup: startMenu }
     );
-    console.log(`${ctx.from?.first_name} ${ctx.from?.last_name} ${ctx.from?.id} ${ctx.from?.username} начал диалог с ботом`);
+    console.log(`Пользователь:\n
+        Имя: ${ctx.from?.first_name ?? "Не указано"}\n
+        Фамилия: ${ctx.from?.last_name ?? "Не указано"}\n
+        ID: ${ctx.from?.id ?? "Не указано"}\n
+        username: ${ctx.from?.username ?? "Не указано"}\n
+        Дата: ${new Date().toLocaleString()} запустил бота`);
 });
 
 
