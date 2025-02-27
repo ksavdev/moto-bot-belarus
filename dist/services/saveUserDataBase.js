@@ -2,7 +2,7 @@ import { closeDB, openDB } from "./openDataBase.js";
 export async function saveUserInDataBase(name, surname, id, username) {
     const client = await openDB();
     try {
-        const request = await client.query(`
+        await client.query(`
             INSERT INTO users (name, surname, id, username)
             `);
     }
