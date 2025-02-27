@@ -71,22 +71,22 @@ ${place.note ? `ℹ️ <i>${place.note}</i>` : ''}`
 
     await ctx.reply(fastFoodPlacesList, { parse_mode: "HTML", link_preview_options: { is_disabled: true } });
     await ctx.menu.close();
-  })
-  .row()
-  .text("📆 Мото-мероприятия", async (ctx) => {
+    })
+    .row()
+    .text("📆 Мото-мероприятия", async (ctx) => {
     const events = await getEvents();
-    const eventsList = events.map(event => `
-📆 <b>${event.name}</b>  
-📍 <i>${event.date}</i>  
-🔗 <a href="${event.link}">Перейти</a>  
-${event.note ? `ℹ️ <i>${event.note}</i>` : ''}`
-    ).join("\n\n");
+    const eventsList = events.length > 0 ? events.map(event => `
+  📆 <b>${event.name}</b>  
+  📍 <i>${event.date}</i>  
+  🔗 <a href="${event.link}">Перейти</a>  
+  ${event.note ? `ℹ️ <i>${event.note}</i>` : ''}`
+    ).join("\n\n") : "На данный момент нет ближайших мероприятий";
 
     await ctx.reply(eventsList, { parse_mode: "HTML", link_preview_options: { is_disabled: true } });
     await ctx.menu.close();
-  })
-  .row()
-  .text("💬 Чаты мотоциклистов Беларуси", async (ctx) => {
+    })
+    .row()
+    .text("💬 Чаты мотоциклистов Беларуси", async (ctx) => {
     const chats = await getChats();
     const chatsList = chats.map(chat => `
 💬 <b>${chat.name}</b>
