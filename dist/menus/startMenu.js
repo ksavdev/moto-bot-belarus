@@ -19,11 +19,11 @@ export const startMenu = new Menu("start-menu")
     //   await ctx.menu.close();
     // })
     // .row()
-    .text("Лучшие маршруты по Беларуси", async (ctx) => {
-    await ctx.reply(`Раздел в разработке...`);
-    await ctx.menu.close();
-})
-    .row()
+    // .text("Лучшие маршруты по Беларуси", async (ctx) => {
+    //   await ctx.reply(`Раздел в разработке...`);
+    //   await ctx.menu.close();
+    // })
+    // .row()
     .text("Написать разработчику", async (ctx) => {
     await ctx.conversation.enter("contactConversation");
     await ctx.menu.close();
