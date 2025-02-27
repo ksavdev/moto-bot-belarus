@@ -23,7 +23,7 @@ export const mainMenu = new Menu("main-menu")
         parse_mode: "HTML",
         link_preview_options: { is_disabled: true },
     });
-    // Не закрываем меню
+    await ctx.menu.close();
 })
     .row()
     .text("🌍 Где купить новый экип (Европа)", async (ctx) => {
@@ -37,6 +37,7 @@ export const mainMenu = new Menu("main-menu")
         parse_mode: "HTML",
         link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
 })
     .row()
     .text("♻ Где купить б/у экип (РБ)", async (ctx) => {
@@ -52,6 +53,7 @@ ${shop.note ? `💡 <i>${shop.note}</i>` : ""}`)
         parse_mode: "HTML",
         link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
 })
     .row()
     .text("🏍 Где купить б/у мотоцикл", async (ctx) => {
@@ -67,6 +69,7 @@ ${shop.note ? `💡 <i>${shop.note}</i>` : ""}`)
         parse_mode: "HTML",
         link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
 })
     .row()
     .text("🏍 Где купить новый мотоцикл", async (ctx) => {
@@ -82,6 +85,7 @@ ${shop.note ? `💡 <i>${shop.note}</i>` : ""}`)
         parse_mode: "HTML",
         link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
 })
     .row()
     .text("🛞 Где купить резину", async (ctx) => {
@@ -97,6 +101,7 @@ ${shop.note ? `💡 <i>${shop.note}</i>` : ""}`)
         parse_mode: "HTML",
         link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
 })
     .row()
     .text("⛓️ Где купить расходники", async (ctx) => {
@@ -112,6 +117,7 @@ ${shop.note ? `💡 <i>${shop.note}</i>` : ""}`)
         parse_mode: "HTML",
         link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
 })
     .row()
     .text("🔧 Мотосервисы и шиномонтаж", async (ctx) => {
@@ -127,6 +133,7 @@ ${service.note ? `💡 <i>${service.note}</i>` : ""}`)
         parse_mode: "HTML",
         link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
 })
     .row()
     .text("🍔 Где поесть", async (ctx) => {
@@ -142,6 +149,7 @@ ${place.note ? `ℹ️ <i>${place.note}</i>` : ""}`)
         parse_mode: "HTML",
         link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
 })
     .row()
     .text("📆 Мото-мероприятия", async (ctx) => {
@@ -159,6 +167,7 @@ ${event.note ? `ℹ️ <i>${event.note}</i>` : ""}`)
         parse_mode: "HTML",
         link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
 })
     .row()
     .text("💬 Чаты мотоциклистов Беларуси", async (ctx) => {
@@ -173,6 +182,7 @@ ${chat.note ? `ℹ️<i>${chat.note}</i>` : ""}`)
         parse_mode: "HTML",
         link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
 })
     .row()
     .text("🚨 Черный список СТО и магазинов", async (ctx) => {
@@ -188,6 +198,7 @@ ${shop.note ? `ℹ️<i>${shop.note}</i>` : ""}
         parse_mode: "HTML",
         link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
 })
     .row()
     // Главное: кнопка назад

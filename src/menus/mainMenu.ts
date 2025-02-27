@@ -28,7 +28,7 @@ export const mainMenu = new Menu<MyContext>("main-menu")
       parse_mode: "HTML",
       link_preview_options: { is_disabled: true },
     });
-    // Не закрываем меню
+    await ctx.menu.close();
   })
   .row()
 
@@ -49,6 +49,7 @@ export const mainMenu = new Menu<MyContext>("main-menu")
         link_preview_options: { is_disabled: true },
       },
     );
+    await ctx.menu.close();
   })
   .row()
 
@@ -67,6 +68,7 @@ ${shop.note ? `💡 <i>${shop.note}</i>` : ""}`
       parse_mode: "HTML",
       link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
   })
   .row()
 
@@ -86,6 +88,7 @@ ${shop.note ? `💡 <i>${shop.note}</i>` : ""}`
       parse_mode: "HTML",
       link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
   })
   .row()
 
@@ -105,6 +108,7 @@ ${shop.note ? `💡 <i>${shop.note}</i>` : ""}`
       parse_mode: "HTML",
       link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
   })
   .row()
 
@@ -123,6 +127,7 @@ ${shop.note ? `💡 <i>${shop.note}</i>` : ""}`
       parse_mode: "HTML",
       link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
   })
   .row()
 
@@ -141,6 +146,7 @@ ${shop.note ? `💡 <i>${shop.note}</i>` : ""}`
       parse_mode: "HTML",
       link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
   })
   .row()
 
@@ -160,6 +166,7 @@ ${service.note ? `💡 <i>${service.note}</i>` : ""}`
       parse_mode: "HTML",
       link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
   })
   .row()
 
@@ -178,6 +185,7 @@ ${place.note ? `ℹ️ <i>${place.note}</i>` : ""}`
       parse_mode: "HTML",
       link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
   })
   .row()
 
@@ -200,6 +208,7 @@ ${event.note ? `ℹ️ <i>${event.note}</i>` : ""}`
       parse_mode: "HTML",
       link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
   })
   .row()
 
@@ -217,6 +226,7 @@ ${chat.note ? `ℹ️<i>${chat.note}</i>` : ""}`
       parse_mode: "HTML",
       link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
   })
   .row()
 
@@ -236,6 +246,7 @@ ${shop.note ? `ℹ️<i>${shop.note}</i>` : ""}
       parse_mode: "HTML",
       link_preview_options: { is_disabled: true },
     });
+    await ctx.menu.close();
   })
   .row()
 
