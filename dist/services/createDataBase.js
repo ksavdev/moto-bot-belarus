@@ -69,7 +69,7 @@ export async function createDataBase() {
         id SERIAL PRIMARY KEY,
         name TEXT,
         surname TEXT,
-        ID TEXT,
+        telegramID TEXT,
         username TEXT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
