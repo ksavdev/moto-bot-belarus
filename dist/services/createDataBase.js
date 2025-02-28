@@ -142,6 +142,17 @@ export async function createDataBase() {
           link TEXT,
           note TEXT
         `
+            },
+            {
+                name: "moto_tuning",
+                columns: `
+          id SERIAL PRIMARY KEY,
+          name TEXT,
+          category TEXT,
+          address TEXT,
+          link TEXT,
+          note TEXT
+        `
             }
         ];
         for (const table of tables) {
