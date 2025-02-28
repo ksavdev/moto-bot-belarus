@@ -11,6 +11,7 @@ import { getNewMotoShops, getUsedMotoShops } from "../services/getMotoShops.js";
 import { getMotoTireShops } from "../services/getMotoTireShops.js";
 import { getMotoConsumablesShops } from "../services/getMotoConsumablesShops.js";
 import { getMotoRent } from "../services/getMotoRent.js";
+import { tuningMenu } from "./tuningMenu.js";
 export const mainMenu = new Menu("main-menu")
     .text("🛒 Где купить новый экип (РБ)", async (ctx) => {
     const shops = await getEquipShops();
@@ -153,6 +154,8 @@ ${service.note ? `💡 <i>${service.note}</i>` : ""}`)
     await ctx.menu.close();
 })
     .row()
+    .submenu("🛠 Тюнинг", "tuning-menu")
+    .row()
     .text("🍔 Где поесть", async (ctx) => {
     const fastFoodPlaces = await getFastFoodPlaces();
     const fastFoodPlacesList = fastFoodPlaces
@@ -220,3 +223,4 @@ ${shop.note ? `ℹ️<i>${shop.note}</i>` : ""}
     .row()
     // Главное: кнопка назад
     .back("Назад");
+mainMenu.register(tuningMenu);

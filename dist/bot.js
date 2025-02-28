@@ -11,7 +11,6 @@ import { mainMenu } from "./menus/mainMenu.js";
 import { startMenu } from "./menus/startMenu.js";
 import { newbieMenu } from "./menus/newbieMenu.js";
 import { guideMenu } from "./menus/guideMenu.js";
-import { backToMainMenu } from "./menus/backToMainMenu.js";
 // Команды:
 import { startMenuCommand } from "./commands/startMenuCommand.js";
 import { newbieMenuCommand } from "./commands/newbieMenuCommand.js";
@@ -26,6 +25,7 @@ import { sendMsgToUserConversation } from "./conversations/adminConversations/se
 import { addEventCommand, deleteEventCommand, getEventsCommand, } from "./commands/adminCommands/eventsControlCommand.js";
 import { addEventConversation } from "./conversations/adminConversations/addEventConversation.js";
 import { deleteEventConversation } from "./conversations/adminConversations/deleteEventConversation.js";
+import { tuningMenu } from "./menus/tuningMenu.js";
 const bot = new Bot(process.env.BOT_API_KEY || "");
 console.log("BOT_API_KEY:", process.env.BOT_API_KEY);
 bot.use(conversations());
@@ -49,7 +49,7 @@ bot.use(createConversation(deleteEventConversation));
 bot.use(createConversation(sendMsgToUserConversation));
 bot.use(createConversation(contactConversation));
 // Подключаем все меню
-bot.use(backToMainMenu);
+bot.use(tuningMenu);
 bot.use(guideMenu);
 bot.use(newbieMenu);
 bot.use(mainMenu);
