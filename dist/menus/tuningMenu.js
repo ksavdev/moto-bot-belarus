@@ -59,7 +59,7 @@ tuningCategories.forEach((item) => {
             const servicesList = filteredServices.length
                 ? filteredServices
                     .map((service) => `
-🛒 <b>${service.name}</b>
+<b>${service.name}</b>
 📍 <i>${service.address || "Адрес не указан"}</i>
 🔗 <a href="${service.link}">Перейти</a>
 ${service.note ? `💡 <i>${service.note}</i>` : ""}`)
