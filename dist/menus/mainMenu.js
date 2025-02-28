@@ -10,6 +10,7 @@ import { getShopsBlacklist } from "../services/getBlacklistShops.js";
 import { getNewMotoShops, getUsedMotoShops } from "../services/getMotoShops.js";
 import { getMotoTireShops } from "../services/getMotoTireShops.js";
 import { getMotoConsumablesShops } from "../services/getMotoConsumablesShops.js";
+import { getMotoRent } from "../services/getMotoRent.js";
 export const mainMenu = new Menu("main-menu")
     .text("🛒 Где купить новый экип (РБ)", async (ctx) => {
     const shops = await getEquipShops();
@@ -74,6 +75,22 @@ ${shop.note ? `💡 <i>${shop.note}</i>` : ""}`)
     .row()
     .text("🏍 Где купить новый мотоцикл", async (ctx) => {
     const shops = await getNewMotoShops();
+    const shopsList = shops
+        .map((shop) => `
+🏍 <b>${shop.name}</b>
+📍 <i>${shop.address}</i>
+🔗 <a href="${shop.link}">Перейти</a>
+${shop.note ? `💡 <i>${shop.note}</i>` : ""}`)
+        .join("\n\n");
+    await ctx.reply(shopsList, {
+        parse_mode: "HTML",
+        link_preview_options: { is_disabled: true },
+    });
+    await ctx.menu.close();
+})
+    .row()
+    .text("🏍 Прокат мотоциклов", async (ctx) => {
+    const shops = await getMotoRent();
     const shopsList = shops
         .map((shop) => `
 🏍 <b>${shop.name}</b>

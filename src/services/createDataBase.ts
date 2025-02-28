@@ -133,6 +133,16 @@ export async function createDataBase() {
           link TEXT,
           note TEXT
         `
+      },
+      {
+        name: "moto_rent",
+        columns: `
+          id SERIAL PRIMARY KEY,
+          name TEXT,
+          address TEXT,
+          link TEXT,
+          note TEXT
+        `
       }
     ];
 
