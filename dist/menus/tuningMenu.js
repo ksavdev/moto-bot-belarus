@@ -60,7 +60,7 @@ tuningCategories.forEach((item) => {
                 ? filteredServices
                     .map((service) => `
 <b>${service.name}</b>
-📍 <i>${service.address || "Адрес не указан"}</i>
+📍 ${service.address || "Адрес не указан"}
 🔗 <a href="${service.link}">Перейти</a>
 ${service.note ? `💡 <i>${service.note}</i>` : ""}`)
                     .join("\n\n")
