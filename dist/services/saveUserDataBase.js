@@ -5,6 +5,8 @@ export async function saveUserInDataBase(name, surname, id, username) {
         await client.query(`
             INSERT INTO users (name, surname, telegramID, username)
             VALUES ($1, $2, $3, $4)
+            ON CONFLICT (telegramID)
+            DO UPDATE SET name = EXCLUDED.name, surname = EXCLUDED.surname, username = EXCLUDED.username
         `, [name, surname, id, username]);
     }
     catch (error) {
