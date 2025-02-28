@@ -4,6 +4,10 @@ import { getMotoTuning } from "../services/getMotoTuning.js";
 // label (отображаемый на кнопке) — на русском
 const tuningCategories = [
     {
+        label: "🔌 Электрика и приборная панель (шкалы)",
+        category: "electronics"
+    },
+    {
         label: "🖌 Кастомная покраска и аэрография",
         category: "custom_painting"
     },
@@ -22,10 +26,6 @@ const tuningCategories = [
     {
         label: "🛞 Подвеска и тормоза",
         category: "suspension_and_brakes"
-    },
-    {
-        label: "🔌 Электрика и приборная панель (шкалы)",
-        category: "electronics"
     },
     {
         label: "🪑 Сиденье и эргономика",
