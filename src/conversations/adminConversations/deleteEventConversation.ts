@@ -27,6 +27,6 @@ ${event.note ? `ℹ️ <i>${event.note}</i>` : ''}`
         deleteEvent(eventID)
     );
 
-    await ctx.reply(`Спасибо! Я удалил мероприятие "${eventID}" в базу данных.`);
+    await ctx.reply(`Спасибо! Я удалил мероприятие "${eventID}" из базы данных.`);
 
 };

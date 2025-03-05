@@ -16,5 +16,5 @@ ${event.note ? `ℹ️ <i>${event.note}</i>` : ''}`).join("\n\n") : "На дан
     }
     const eventID = Number(messageName.text);
     await conversation.external(() => deleteEvent(eventID));
-    await ctx.reply(`Спасибо! Я удалил мероприятие "${eventID}" в базу данных.`);
+    await ctx.reply(`Спасибо! Я удалил мероприятие "${eventID}" из базы данных.`);
 };
