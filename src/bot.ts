@@ -13,7 +13,6 @@ import {
 } from "@grammyjs/conversations";
 
 import { createDataBase } from "./services/createDataBase.js";
-import { saveUserInDataBase } from "./services/saveUserDataBase.js";
 
 // Меню:
 import { mainMenu } from "./menus/mainMenu.js";
@@ -43,6 +42,7 @@ import {
 } from "./commands/adminCommands/eventsControlCommand.js";
 import { addEventConversation } from "./conversations/adminConversations/addEventConversation.js";
 import { deleteEventConversation } from "./conversations/adminConversations/deleteEventConversation.js";
+import { saveUserOnStart } from "./services/dataBaseFeatures/saveUserOnStart.js";
 
 
 const bot = new Bot<MyContext>(process.env.BOT_API_KEY || "");
@@ -125,21 +125,12 @@ bot.command("start", async (ctx) => {
     },
   );
   
-  // Лог в консоль
-  console.log(`Пользователь:
-    Имя: ${ctx.from?.first_name ?? "Не указано"}
-    Фамилия: ${ctx.from?.last_name ?? "Не указано"}
-    ID: ${ctx.from?.id ?? "Не указано"}
-    username: ${ctx.from?.username ?? "Не указано"}
-    Дата: ${new Date().toLocaleString()} запустил бота`
-  );
-
-  // Сохраняем в БД
-  saveUserInDataBase(
-    ctx.from?.first_name ?? "Не указано",
-    ctx.from?.last_name ?? "Не указано",
+// Сохраняем в БД
+  saveUserOnStart(
     ctx.from?.id ?? 0,
-    ctx.from?.username ?? "Не указано"
+    ctx.from?.username ?? "Не указано",
+    ctx.from?.first_name ?? "Не указано",
+    ctx.from?.last_name ?? "Не указано"
   );
 });
 

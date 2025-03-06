@@ -5,7 +5,6 @@ import { Bot } from "grammy";
 import { setupBotCommands } from "./commands/commandList.js";
 import { conversations, createConversation, } from "@grammyjs/conversations";
 import { createDataBase } from "./services/createDataBase.js";
-import { saveUserInDataBase } from "./services/saveUserDataBase.js";
 // Меню:
 import { mainMenu } from "./menus/mainMenu.js";
 import { startMenu } from "./menus/startMenu.js";
@@ -26,6 +25,7 @@ import { sendMsgToUserConversation } from "./conversations/adminConversations/se
 import { addEventCommand, deleteEventCommand, getEventsCommand, } from "./commands/adminCommands/eventsControlCommand.js";
 import { addEventConversation } from "./conversations/adminConversations/addEventConversation.js";
 import { deleteEventConversation } from "./conversations/adminConversations/deleteEventConversation.js";
+import { saveUserOnStart } from "./services/dataBaseFeatures/saveUserOnStart.js";
 const bot = new Bot(process.env.BOT_API_KEY || "");
 console.log("BOT_API_KEY:", process.env.BOT_API_KEY);
 bot.use(conversations());
@@ -81,15 +81,8 @@ bot.command("start", async (ctx) => {
     await ctx.reply(`Привет, ${ctx.from?.first_name}! Я Мото Бот 🏍️. Я помогу тебе с выбором мотошколы, экипировки, сервисов и многим другим. Выбери, что тебе нужно из меню ниже! 🚀`, {
         reply_markup: startMenu, // показываем стартовое меню
     });
-    // Лог в консоль
-    console.log(`Пользователь:
-    Имя: ${ctx.from?.first_name ?? "Не указано"}
-    Фамилия: ${ctx.from?.last_name ?? "Не указано"}
-    ID: ${ctx.from?.id ?? "Не указано"}
-    username: ${ctx.from?.username ?? "Не указано"}
-    Дата: ${new Date().toLocaleString()} запустил бота`);
     // Сохраняем в БД
-    saveUserInDataBase(ctx.from?.first_name ?? "Не указано", ctx.from?.last_name ?? "Не указано", ctx.from?.id ?? 0, ctx.from?.username ?? "Не указано");
+    saveUserOnStart(ctx.from?.id ?? 0, ctx.from?.username ?? "Не указано", ctx.from?.first_name ?? "Не указано", ctx.from?.last_name ?? "Не указано");
 });
 // Если пользователь пишет что-то без команды
 bot.on("message", (ctx) => ctx.reply("Если у тебя возникли вопросы, вызови команду /help. Чтобы написать разработчику, используй команду /contact"));
